@@ -1,4 +1,9 @@
  name: Shopify Theme check
+ # give the workflow just enough rights to run theme-check
+ permissions:
+ contents: read     # we only need to read your code
+ checks: write      # allow creating the GitHub Check run
+
  on:
    push:
      branches:
