@@ -1,0 +1,19 @@
+# Theme check CI
+# For more info check: https://shopify.dev/themes/tools/theme-check
+
+name: Shopify Theme check
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:     # lets you manually trigger in the Actions UI
+jobs:
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Theme Check
+        uses: shopify/theme-check-action@v1
+        with:
+          token: ${{ github.token }}
