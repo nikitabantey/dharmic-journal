@@ -1,19 +1,20 @@
-# Theme check CI
-# For more info check: https://shopify.dev/themes/tools/theme-check
-
-name: Shopify Theme check
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:     # lets you manually trigger in the Actions UI
-jobs:
-  theme-check:
-    name: Theme Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+ name: Shopify Theme check
+ on:
+   push:
+     branches:
+       - main
+   workflow_dispatch:
+ jobs:
+   theme-check:
+     name: Theme Check
+     runs-on: ubuntu-latest
+     steps:
+      - uses: actions/checkout@v4                               # upgrade to latest checkout:contentReference[oaicite:0]{index=0}
       - name: Theme Check
-        uses: shopify/theme-check-action@v1
+        uses: shopify/theme-check-action@v2                      # Node-based, no Ruby required:contentReference[oaicite:1]{index=1}
         with:
           token: ${{ github.token }}
+          # optional: if your theme lives in a subfolder, point at it:
+          # theme_root: './path/to/theme'
+          # optional: only annotate changes vs main
+          # base: main
